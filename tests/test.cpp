@@ -97,8 +97,9 @@ TEST_CASE("Assignment operators", "[map]") {
     Map m2;
     m2 = m1;
     REQUIRE(m2.size() == 1);
-    m2 = std::move(m2);
+    m2 = std::move(m1);
     REQUIRE(m2.size() == 1);
+    REQUIRE(m1.empty());
 }
 
 TEST_CASE("Lower_bound and upper_bound", "[map]") {

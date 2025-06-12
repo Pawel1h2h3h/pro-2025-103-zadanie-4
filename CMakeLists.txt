@@ -9,10 +9,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(catch2)
 
-# Enforce C++11
-set(CMAKE_CXX_STANDARD 11)
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+add_compile_options(-Wall -Wextra -Wpedantic)
 
 # Header-only library target
 set(MYMAP_HEADERS
@@ -23,6 +24,7 @@ set(MYMAP_HEADERS
 )
 
 add_library(MyMap INTERFACE)
+target_compile_options(MyMap INTERFACE -Wall -Wextra -Wpedantic)
 target_sources(MyMap INTERFACE
     FILE_SET HEADERS
     BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
